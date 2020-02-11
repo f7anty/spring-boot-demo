@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: demo
+  thymeleaf:
+    cache: false
+    mode: HTML
+
+
+logging:
+  file:
+    path: ./
+  level:
+    root: info
+
+
+
+

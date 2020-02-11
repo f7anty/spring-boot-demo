@@ -1,0 +1,42 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    master:
+      driver-class-name: com.p6spy.engine.spy.P6SpyDriver #com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:p6spy:mysql://localhost:3306/springboot?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: root1234
+      initialSize: 10
+      minIdle: 10
+      maxActive: 100
+      testOnBorrow: true
+      testOnReturn: true
+      testWhileIdle: true
+      validationInterval: 60000
+      validationQuery: SELECT 1
+  session:
+    cookie:
+      domainName:
+      cookieName: web_admin_sid_dev
+      cookiePath: /
+    redis:
+      database: 0
+      host: localhost
+      port: 6379
+      password:
+
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+
+
+
+

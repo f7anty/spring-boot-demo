@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script type="text/javascript">
+        function login() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",//预期服务器返回的数据类型
+                url: "login",
+                data: JSON.stringify({
+                    'loginId': $('input[name=loginId]').val(),
+                    'password': $('input[name=password]').val()
+                }),
+                success: function (data) {
+                    console.log(data)
+                    if (data.success) {
+                        window.location.href = 'index'
+                    }
+                },
+                error: function (data) {
+                    alert("异常");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<form id ="form1" action="" method="post" onsubmit="return false">
+    <p>账号：<input type="text" name="loginId" value="admin"/></p>
+    <p>密码：<input type="text" name="password" value="123456"/></p>
+    <p><input type="submit" onclick="login();" value="登录"></p>
+</form>
+</body>
+</html>
